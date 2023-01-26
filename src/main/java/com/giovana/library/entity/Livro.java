@@ -6,6 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 
 @RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Livro implements Serializable {
@@ -29,10 +30,11 @@ public class Livro implements Serializable {
     @NonNull @Getter @Setter
     private String genero;
 
-//    @Getter @Setter private boolean status;
-
-    @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
     @Getter @Setter
-    private Emprestimo emprestimo;
+    private boolean status;
+
+//    @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
+//    @Getter @Setter
+//    private Emprestimo emprestimo;
 
 }

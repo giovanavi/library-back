@@ -30,11 +30,11 @@ public class Emprestimo implements Serializable {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     @Getter@Setter
-    private Usuário usuario;
+    private Usuario usuario;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "livro_id")
     @Getter@Setter
+    @OneToOne
+    @JoinColumn(name = "livro_id")
     private Livro livro;
 
 }

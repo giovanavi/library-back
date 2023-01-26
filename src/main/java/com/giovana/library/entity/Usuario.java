@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Usuário implements Serializable {
+public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class Usuário implements Serializable {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
-    public Usuário(Integer id, String matricula, String nome, String email, String turma, String cpf) {
+    public Usuario(Integer id, String matricula, String nome, String email, String turma, String cpf) {
         this.id = id;
         this.matricula = matricula;
         this.nome = nome;
