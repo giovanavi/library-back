@@ -1,16 +1,20 @@
 package com.giovana.library.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class Emprestimo {
+@Entity
+public class Emprestimo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +27,14 @@ public class Emprestimo {
     @Getter@Setter
     private String dataDevolução;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @Getter@Setter
+    private Usuário usuario;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "livro_id")
     @Getter@Setter
     private Livro livro;
-
-    @Getter@Setter
-    private Usuário usuário;
 
 }

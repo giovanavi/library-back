@@ -1,14 +1,17 @@
 package com.giovana.library.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.io.Serializable;
 
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Livro {
+@Entity
+public class Livro implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
@@ -28,6 +31,7 @@ public class Livro {
 
 //    @Getter @Setter private boolean status;
 
+    @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
     @Getter @Setter
     private Emprestimo emprestimo;
 

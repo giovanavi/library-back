@@ -1,18 +1,21 @@
 package com.giovana.library.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
-public class Usuário {
+@Entity
+public class Usuário implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
@@ -34,7 +37,8 @@ public class Usuário {
     private String cpf;
 
     @Getter @Setter
-    private List<Emprestimo> emprestimoList = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public Usuário(Integer id, String matricula, String nome, String email, String turma, String cpf) {
         this.id = id;
