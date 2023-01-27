@@ -1,5 +1,7 @@
 package com.giovana.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,12 +41,12 @@ public class Usuario implements Serializable {
     @Getter @Setter
     private String cpf;
 
+    @JsonIgnoreProperties(value = {"usuario", "livro"})
     @Getter @Setter
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
-    public Usuario(Integer id, String matricula, String nome, String email, String turma, String cpf) {
-        this.id = id;
+    public Usuario(String matricula, String nome, String email, String turma, String cpf) {
         this.matricula = matricula;
         this.nome = nome;
         this.email = email;

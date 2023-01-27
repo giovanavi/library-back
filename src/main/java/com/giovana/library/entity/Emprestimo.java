@@ -1,6 +1,7 @@
 package com.giovana.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,13 +29,14 @@ public class Emprestimo implements Serializable {
 
     @Getter@Setter
     private String dataDevolução;
-    @JsonIgnore
+
+    @JsonIgnoreProperties("emprestimos")
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     @Getter@Setter
     private Usuario usuario;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("emprestimo")
     @Getter@Setter
     @OneToOne
     @JoinColumn(name = "livro_id")

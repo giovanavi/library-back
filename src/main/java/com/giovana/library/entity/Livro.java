@@ -1,11 +1,11 @@
 package com.giovana.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -19,26 +19,35 @@ public class Livro implements Serializable {
     @Getter @Setter
     private Integer id;
 
-    @NonNull @Getter @Setter
+    @Getter @Setter
     private String isbn;
 
-    @NonNull @Getter @Setter
+    @Getter @Setter
     private String  nome;
 
-    @NonNull @Getter @Setter
+    @Getter @Setter
     private String autor;
 
-    @NonNull @Getter @Setter
+    @Getter @Setter
     private String editora;
 
-    @NonNull @Getter @Setter
+    @Getter @Setter
     private String genero;
 
     @Getter @Setter
     private boolean status;
 
-//    @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
-//    @Getter @Setter
-//    private Emprestimo emprestimo;
+    @JsonIgnoreProperties(value = {"usuario", "livro"})
+    @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
+    @Getter @Setter
+    private Emprestimo emprestimo;
 
+    public Livro(String isbn, String nome, String autor, String editora, String genero, boolean status) {
+        this.isbn = isbn;
+        this.nome = nome;
+        this.autor = autor;
+        this.editora = editora;
+        this.genero = genero;
+        this.status = status;
+    }
 }
