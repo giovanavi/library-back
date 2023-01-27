@@ -19,7 +19,7 @@ public class DevConfig {
 
     @Bean
     public boolean initDataBase(){
-        if (strategy.equals("update")){
+        if (strategy.equals("create")){
             this.dbService.initDataBase();
             return true;
         }
