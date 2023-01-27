@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -21,28 +22,21 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Integer id;
 
     @Column(unique = true)
-    @Getter @Setter
     private String matricula;
 
-    @Getter @Setter
     private String nome;
 
     @Column(unique = true)
-    @Getter @Setter
     private String email;
 
-    @Getter @Setter
     private String turma;
     @Column(unique = true)
-    @Getter @Setter
     private String cpf;
 
     @JsonIgnoreProperties(value = {"usuario", "livro"})
-    @Getter @Setter
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Emprestimo> emprestimos = new ArrayList<>();
 

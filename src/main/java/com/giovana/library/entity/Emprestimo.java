@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "emprestimo")
 public class Emprestimo implements Serializable {
@@ -21,23 +22,18 @@ public class Emprestimo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter@Setter
     private Integer id;
 
-    @Getter@Setter
     private String dataEmprestimo;
 
-    @Getter@Setter
     private String dataDevolução;
 
     @JsonIgnoreProperties("emprestimos")
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @Getter@Setter
     private Usuario usuario;
 
     @JsonIgnoreProperties("emprestimo")
-    @Getter@Setter
     @OneToOne
     @JoinColumn(name = "livro_id")
     private Livro livro;

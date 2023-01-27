@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "adm")
 public class Administrador implements Serializable {
@@ -18,15 +19,12 @@ public class Administrador implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Integer id;
 
     @Column(unique = true)
-    @Getter @Setter
     private String login;
 
     @Column(unique = true)
-    @Getter @Setter
     private String email;
 
     @Column
