@@ -21,18 +21,20 @@ public class Usuario implements Serializable {
     @Getter @Setter
     private Integer id;
 
+    @Column(unique = true)
     @Getter @Setter
     private String matricula;
 
     @Getter @Setter
     private String nome;
 
+    @Column(unique = true)
     @Getter @Setter
     private String email;
 
     @Getter @Setter
     private String turma;
-
+    @Column(unique = true)
     @Getter @Setter
     private String cpf;
 

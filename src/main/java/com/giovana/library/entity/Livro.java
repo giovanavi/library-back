@@ -19,6 +19,9 @@ public class Livro implements Serializable {
     private Integer id;
 
     @NonNull @Getter @Setter
+    private String isbn;
+
+    @NonNull @Getter @Setter
     private String  nome;
 
     @NonNull @Getter @Setter
