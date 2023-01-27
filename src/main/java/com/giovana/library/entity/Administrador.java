@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "adm")
 public class Administrador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,12 +21,15 @@ public class Administrador implements Serializable {
     @Getter @Setter
     private Integer id;
 
+    @Column(unique = true)
     @Getter @Setter
     private String login;
 
+    @Column(unique = true)
     @Getter @Setter
     private String email;
 
+    @Column
     @Getter @Setter
     private String senha;
 
