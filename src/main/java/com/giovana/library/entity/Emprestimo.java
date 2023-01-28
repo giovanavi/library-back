@@ -11,7 +11,6 @@ import lombok.Setter;
 import java.io.Serializable;
 
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
 @Entity
@@ -26,7 +25,7 @@ public class Emprestimo implements Serializable {
 
     private String dataEmprestimo;
 
-    private String dataDevolução;
+    private String dataDevolucao;
 
     @JsonIgnoreProperties("emprestimos")
     @ManyToOne
@@ -38,4 +37,10 @@ public class Emprestimo implements Serializable {
     @JoinColumn(name = "livro_id")
     private Livro livro;
 
+    public Emprestimo(String dataEmprestimo, String dataDevolucao, Usuario usuario, Livro livro) {
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.usuario = usuario;
+        this.livro = livro;
+    }
 }

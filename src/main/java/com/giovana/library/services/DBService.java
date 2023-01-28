@@ -35,11 +35,11 @@ public class DBService {
         Usuario usuario2 = new Usuario("698745", "Maria", "maria@email.com", "3B", "96385274151");
         Usuario usuario3 = new Usuario("635241", "Pedro", "pedro@email.com", "1C", "09876543211");
 
-        Emprestimo emprestimo1 = new Emprestimo(null, "26/1/2023", "9/2/2023", usuario1, livro1);
+        Emprestimo emprestimo1 = new Emprestimo("26/1/2023", "9/2/2023", usuario1, livro1);
         livro1.setStatus("true");
-        Emprestimo emprestimo2 = new Emprestimo(null, "27/1/2023", "10/2/2023", usuario2, livro2);
+        Emprestimo emprestimo2 = new Emprestimo("27/1/2023", "10/2/2023", usuario2, livro2);
         livro2.setStatus("true");
-        Emprestimo emprestimo3 = new Emprestimo(null, "28/1/2023", "11/2/2023", usuario2, livro3);
+        Emprestimo emprestimo3 = new Emprestimo("28/1/2023", "11/2/2023", usuario2, livro3);
         livro3.setStatus("true");
 
         usuario1.getEmprestimos().add(emprestimo1);
