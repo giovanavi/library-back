@@ -26,4 +26,8 @@ public class LivroService {
         return repository.findAll();
     }
 
+    public Livro create(Livro livro){
+        return repository.save(livro);
+    }
+
 }

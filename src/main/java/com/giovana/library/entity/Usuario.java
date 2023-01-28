@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
     private String cpf;
 
     @JsonIgnoreProperties(value = {"usuario", "livro"})
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public Usuario(String matricula, String nome, String email, String turma, String cpf) {

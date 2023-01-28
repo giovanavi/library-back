@@ -24,4 +24,8 @@ public class EmprestimoService {
     public List<Emprestimo> findAll(){
         return repository.findAll();
     }
+
+    public Emprestimo create(Emprestimo emp){
+        return repository.save(emp);
+    }
 }
