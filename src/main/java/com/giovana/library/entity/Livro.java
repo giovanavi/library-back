@@ -29,13 +29,13 @@ public class Livro implements Serializable {
 
     private String genero;
 
-    private boolean status;
+    private String status;
 
     @JsonIgnoreProperties(value = {"usuario", "livro"})
     @OneToOne(mappedBy = "livro", cascade = CascadeType.REMOVE, targetEntity = Emprestimo.class)
     private Emprestimo emprestimo;
 
-    public Livro(String isbn, String nome, String autor, String editora, String genero, boolean status) {
+    public Livro(String isbn, String nome, String autor, String editora, String genero, String status) {
         this.isbn = isbn;
         this.nome = nome;
         this.autor = autor;
