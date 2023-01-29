@@ -16,8 +16,6 @@ public class LivroService {
     @Autowired
     private LivroRepository livroRepository;
 
-    @Autowired
-    private EmprestimoService emprestimoService;
 
     public Livro findById(Integer id){
         Optional<Livro> livro = livroRepository.findById(id);
@@ -34,10 +32,6 @@ public class LivroService {
     }
 
     public Livro update(Integer id, Livro livro) {
-        //alterando informações do livro no emprestimo
-        Emprestimo emp = livro.getEmprestimo();
-        emp.setLivro(livro);
-        emprestimoService.update(emp.getId(), emp);
 
 
         Livro l = findById(id);

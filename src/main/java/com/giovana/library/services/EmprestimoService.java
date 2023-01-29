@@ -15,8 +15,6 @@ public class EmprestimoService {
 
     @Autowired
     private EmprestimoRepository emprestimoRepository;
-    @Autowired
-    private LivroService livroService;
 
     public Emprestimo findById(Integer id){
         Optional<Emprestimo> emp =  emprestimoRepository.findById(id);
@@ -29,10 +27,6 @@ public class EmprestimoService {
     }
 
     public Emprestimo create(Emprestimo emp){
-        Livro livro = emp.getLivro();
-        livro.setStatus("true");
-        livroService.update(emp.getLivro().getId(), emp.getLivro());
-
         return emprestimoRepository.save(emp);
     }
 

@@ -1,7 +1,9 @@
 package com.giovana.library.resources;
 
 import com.giovana.library.dto.UsuarioDTO;
+import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Usuario;
+import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +18,19 @@ import java.util.List;
 public class UsuarioResource {
 
     @Autowired
-    private UsuarioService service;
+    private UsuarioService usuarioService;
+
+    @Autowired
+    private EmprestimoService emprestimoService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Integer id){
-        Usuario user = service.findById(id);
+        Usuario user = usuarioService.findById(id);
         return ResponseEntity.ok().body(user);
     }
     @GetMapping(value = "/")
     public ResponseEntity<List<UsuarioDTO>> findAll(){
-        List<Usuario> list = service.findAll();
+        List<Usuario> list = usuarioService.findAll();
 
         List<UsuarioDTO> listDTO = list.stream().map( obj -> new UsuarioDTO(obj)).toList();
 
@@ -34,7 +39,7 @@ public class UsuarioResource {
 
     @PostMapping
     public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
-        usuario = service.create(usuario);
+        usuario = usuarioService.create(usuario);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
 
@@ -43,7 +48,14 @@ public class UsuarioResource {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario){
-        Usuario newUsuario = service.update(id, usuario);
+        //alterando informações do user nos emprestimos
+        List<Emprestimo> emprestimos = usuario.getEmprestimos();
+        for (Emprestimo e: emprestimos){
+            e.setUsuario(usuario);
+            emprestimoService.update(e.getId(), e);
+        }
+
+        Usuario newUsuario = usuarioService.update(id, usuario);
 
         return ResponseEntity.ok().body(newUsuario);
     }

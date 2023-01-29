@@ -16,9 +16,6 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private EmprestimoService emprestimoService;
-
 
     public Usuario findById(Integer id){
         Optional<Usuario> user = usuarioRepository.findById(id);
@@ -35,13 +32,6 @@ public class UsuarioService {
     }
 
     public Usuario update(Integer id, Usuario usuario){
-        //alterando informações do user nos emprestimos
-        List<Emprestimo> emprestimos = usuario.getEmprestimos();
-        for (Emprestimo e: emprestimos){
-            e.setUsuario(usuario);
-            emprestimoService.update(e.getId(), e);
-        }
-
 
         Usuario u = findById(id);
         u.setNome(usuario.getNome());

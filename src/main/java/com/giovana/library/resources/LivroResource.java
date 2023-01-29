@@ -1,7 +1,9 @@
 package com.giovana.library.resources;
 
 import com.giovana.library.dto.LivroDTO;
+import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Livro;
+import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,9 @@ public class LivroResource {
 
     @Autowired
     private LivroService service;
+
+    @Autowired
+    private EmprestimoService emprestimoService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Livro> findById(@PathVariable Integer id){
@@ -34,6 +39,11 @@ public class LivroResource {
 
     @PostMapping
     public ResponseEntity<Livro> create(@RequestBody Livro livro){
+        //alterando informações do livro no emprestimo
+        Emprestimo emp = livro.getEmprestimo();
+        emp.setLivro(livro);
+        emprestimoService.update(emp.getId(), emp);
+
         livro = service.create(livro);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livro.getId()).toUri();
