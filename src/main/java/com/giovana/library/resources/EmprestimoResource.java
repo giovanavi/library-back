@@ -2,10 +2,8 @@ package com.giovana.library.resources;
 
 import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
-import com.giovana.library.entity.Livro;
 import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/emprestimo")
@@ -41,11 +38,16 @@ public class EmprestimoResource {
     }
     @PostMapping
     public ResponseEntity<Emprestimo> create(@RequestBody Emprestimo emp){
-        livroService.create(emp.getLivro());
-
         emp = emprestimoService.create(emp);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(emp.getId()).toUri();
 
         return ResponseEntity.created(uri).body(emp);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Emprestimo> update(@PathVariable Integer id, @RequestBody Emprestimo emp){
+        Emprestimo newEmprestimo = emprestimoService.update(id, emp);
+
+        return ResponseEntity.ok().body(newEmprestimo);
     }
 }

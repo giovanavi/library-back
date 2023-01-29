@@ -42,4 +42,10 @@ public class LivroResource {
 
         return ResponseEntity.created(uri).body(livro);
     }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro livro){
+        Livro newLivro = service.update(id, livro);
+
+        return ResponseEntity.ok().body(newLivro);
+    }
 }

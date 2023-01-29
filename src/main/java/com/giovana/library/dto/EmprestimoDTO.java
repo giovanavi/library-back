@@ -4,8 +4,10 @@ import com.giovana.library.entity.Emprestimo;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter @Setter
-public class EmprestimoDTO {
+public class EmprestimoDTO implements Serializable {
 
     private Integer id;
     private String dataEmprestimo;

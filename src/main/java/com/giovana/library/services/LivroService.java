@@ -30,4 +30,16 @@ public class LivroService {
         return repository.save(livro);
     }
 
+    public Livro update(Integer id, Livro livro) {
+        Livro l = findById(id);
+
+        l.setNome(livro.getNome());
+        l.setIsbn(livro.getIsbn());
+        l.setAutor(livro.getAutor());
+        l.setEditora(livro.getEditora());
+        l.setGenero(livro.getGenero());
+        l.setStatus(livro.getStatus());
+
+        return repository.save(l);
+    }
 }

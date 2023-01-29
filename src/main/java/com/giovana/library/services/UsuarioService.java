@@ -29,4 +29,16 @@ public class UsuarioService {
     public Usuario create(Usuario usuario){
         return repository.save(usuario);
     }
+
+    public Usuario update(Integer id, Usuario usuario){
+        Usuario u = findById(id);
+
+        u.setNome(usuario.getNome());
+        u.setMatricula(usuario.getMatricula());
+        u.setEmail(usuario.getEmail());
+        u.setTurma(usuario.getTurma());
+        u.setCpf(usuario.getCpf());
+
+        return repository.save(u);
+    }
 }

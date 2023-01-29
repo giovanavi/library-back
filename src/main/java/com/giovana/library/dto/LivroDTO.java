@@ -1,7 +1,6 @@
 package com.giovana.library.dto;
 
 import com.giovana.library.entity.Livro;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
