@@ -1,6 +1,7 @@
 package com.giovana.library.resources.exceptions;
 
 
+import com.giovana.library.services.exceptions.DataIntegrityViolationException;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import jakarta.servlet.ServletRequest;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,14 @@ public class ResourceExecptionHandler {
                 HttpStatus.NOT_FOUND.value(), exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandartError> dataIntegrityViolationException(DataIntegrityViolationException exception, ServletRequest request){
+        StandartError error = new StandartError(System.currentTimeMillis(),
+                HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
 }

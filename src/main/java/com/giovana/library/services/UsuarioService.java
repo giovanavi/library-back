@@ -1,8 +1,8 @@
 package com.giovana.library.services;
 
-import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.repositories.UsuarioRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +45,11 @@ public class UsuarioService {
 
     public void delete(Integer id) {
         findById(id);
-        usuarioRepository.deleteById(id);
+        try {
+            usuarioRepository.deleteById(id);
+        }catch (DataIntegrityViolationException e){
+            throw new com.giovana.library.services.exceptions.DataIntegrityViolationException(
+                    "Usuário não pode ser excluido! Possui emprestimos associados" );
+        }
     }
 }
