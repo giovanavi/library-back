@@ -44,4 +44,9 @@ public class LivroService {
 
         return livroRepository.save(l);
     }
+
+    public void delete(Integer id) {
+        findById(id);
+        livroRepository.deleteById(id);
+    }
 }

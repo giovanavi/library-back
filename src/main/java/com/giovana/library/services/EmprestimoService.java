@@ -1,7 +1,6 @@
 package com.giovana.library.services;
 
 import com.giovana.library.entity.Emprestimo;
-import com.giovana.library.entity.Livro;
 import com.giovana.library.repositories.EmprestimoRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +38,10 @@ public class EmprestimoService {
         e.setLivro(emp.getLivro());
 
         return emprestimoRepository.save(e);
+    }
+
+    public void delete(Integer id) {
+        findById(id);
+        emprestimoRepository.deleteById(id);
     }
 }

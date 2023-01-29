@@ -42,4 +42,9 @@ public class UsuarioService {
 
         return usuarioRepository.save(u);
     }
+
+    public void delete(Integer id) {
+        findById(id);
+        usuarioRepository.deleteById(id);
+    }
 }

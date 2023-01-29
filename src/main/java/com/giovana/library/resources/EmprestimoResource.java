@@ -55,4 +55,15 @@ public class EmprestimoResource {
 
         return ResponseEntity.ok().body(newEmprestimo);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+        Emprestimo emp = findById(id).getBody();
+        Livro livro = emp.getLivro();
+        livro.setStatus("false");
+        livroService.update(emp.getLivro().getId(), emp.getLivro());
+
+        emprestimoService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
