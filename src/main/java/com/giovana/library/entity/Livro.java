@@ -32,7 +32,7 @@ public class Livro implements Serializable {
     private String status;
 
     @JsonIgnoreProperties(value = {"usuario", "livro"})
-    @OneToOne(mappedBy = "livro", cascade = CascadeType.ALL, targetEntity = Emprestimo.class)
+    @OneToOne(mappedBy = "livro", targetEntity = Emprestimo.class)
     private Emprestimo emprestimo;
 
     public Livro(String isbn, String nome, String autor, String editora, String genero, String status) {
