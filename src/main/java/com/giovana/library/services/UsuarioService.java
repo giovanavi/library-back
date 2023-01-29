@@ -1,6 +1,6 @@
 package com.giovana.library.services;
 
-import com.giovana.library.entity.Livro;
+import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.repositories.UsuarioRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
@@ -14,31 +14,42 @@ import java.util.Optional;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository repository;
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EmprestimoService emprestimoService;
+
 
     public Usuario findById(Integer id){
-        Optional<Usuario> user = repository.findById(id);
+        Optional<Usuario> user = usuarioRepository.findById(id);
         return user.orElseThrow( () -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: "+id+" - Tipo: "+ Usuario.class.getName()));
     }
 
     public List<Usuario> findAll(){
-        return repository.findAll();
+        return usuarioRepository.findAll();
     }
 
     public Usuario create(Usuario usuario){
-        return repository.save(usuario);
+        return usuarioRepository.save(usuario);
     }
 
     public Usuario update(Integer id, Usuario usuario){
-        Usuario u = findById(id);
+        //alterando informações do user nos emprestimos
+        List<Emprestimo> emprestimos = usuario.getEmprestimos();
+        for (Emprestimo e: emprestimos){
+            e.setUsuario(usuario);
+            emprestimoService.update(e.getId(), e);
+        }
 
+
+        Usuario u = findById(id);
         u.setNome(usuario.getNome());
         u.setMatricula(usuario.getMatricula());
         u.setEmail(usuario.getEmail());
         u.setTurma(usuario.getTurma());
         u.setCpf(usuario.getCpf());
 
-        return repository.save(u);
+        return usuarioRepository.save(u);
     }
 }

@@ -3,7 +3,6 @@ package com.giovana.library.resources;
 import com.giovana.library.dto.UsuarioDTO;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.services.UsuarioService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

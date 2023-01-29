@@ -1,6 +1,6 @@
 package com.giovana.library.services;
 
-import com.giovana.library.dto.LivroDTO;
+import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Livro;
 import com.giovana.library.repositories.LivroRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
@@ -14,25 +14,33 @@ import java.util.Optional;
 public class LivroService {
 
     @Autowired
-    LivroRepository repository;
+    private LivroRepository livroRepository;
+
+    @Autowired
+    private EmprestimoService emprestimoService;
 
     public Livro findById(Integer id){
-        Optional<Livro> livro = repository.findById(id);
+        Optional<Livro> livro = livroRepository.findById(id);
         return livro.orElseThrow( () -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: "+id+" - Tipo: "+Livro.class.getName()));
     }
 
     public List<Livro> findAll(){
-        return repository.findAll();
+        return livroRepository.findAll();
     }
 
     public Livro create(Livro livro){
-        return repository.save(livro);
+        return livroRepository.save(livro);
     }
 
     public Livro update(Integer id, Livro livro) {
-        Livro l = findById(id);
+        //alterando informações do livro no emprestimo
+        Emprestimo emp = livro.getEmprestimo();
+        emp.setLivro(livro);
+        emprestimoService.update(emp.getId(), emp);
 
+
+        Livro l = findById(id);
         l.setNome(livro.getNome());
         l.setIsbn(livro.getIsbn());
         l.setAutor(livro.getAutor());
@@ -40,6 +48,6 @@ public class LivroService {
         l.setGenero(livro.getGenero());
         l.setStatus(livro.getStatus());
 
-        return repository.save(l);
+        return livroRepository.save(l);
     }
 }

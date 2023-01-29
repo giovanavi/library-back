@@ -1,9 +1,7 @@
 package com.giovana.library.services;
 
-import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Livro;
-import com.giovana.library.entity.Usuario;
 import com.giovana.library.repositories.EmprestimoRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +41,8 @@ public class EmprestimoService {
 
         e.setDataEmprestimo(emp.getDataEmprestimo());
         e.setDataDevolucao(emp.getDataDevolucao());
+        e.setUsuario(emp.getUsuario());
+        e.setLivro(emp.getLivro());
 
         return emprestimoRepository.save(e);
     }
