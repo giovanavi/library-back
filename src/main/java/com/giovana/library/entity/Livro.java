@@ -21,7 +21,7 @@ public class Livro implements Serializable {
 
     private String isbn;
 
-    private String  nome;
+    private String nome;
 
     private String autor;
 
