@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/emprestimo")
@@ -37,6 +38,7 @@ public class EmprestimoResource {
 
         return ResponseEntity.ok().body(listDTO);
     }
+
     @PostMapping
     public ResponseEntity<Emprestimo> create(@RequestBody Emprestimo emp){
         Livro livro = emp.getLivro();
@@ -66,4 +68,14 @@ public class EmprestimoResource {
         emprestimoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping
+    public ResponseEntity<List<EmprestimoDTO>> findAllByUser(@RequestParam(value = "usuario", defaultValue = "0") Integer id){
+        List<Emprestimo> list = emprestimoService.findAllByUser(id);
+        List<EmprestimoDTO> listDTO = list.stream().map( obj -> new EmprestimoDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(listDTO);
+        //localhost:8080/emprestimo?user=x
+        // quero ver na lista de emprestimos, todos os emprestimos do usuário x
+    }
+    
 }

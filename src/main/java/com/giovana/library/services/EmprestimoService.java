@@ -2,6 +2,7 @@ package com.giovana.library.services;
 
 import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.repositories.EmprestimoRepository;
+import com.giovana.library.repositories.UsuarioRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,10 @@ public class EmprestimoService {
 
     @Autowired
     private EmprestimoRepository emprestimoRepository;
+
+    @Autowired
+    private UsuarioService usuarioService;
+
 
     public Emprestimo findById(Integer id){
         Optional<Emprestimo> emp =  emprestimoRepository.findById(id);
@@ -43,5 +48,10 @@ public class EmprestimoService {
     public void delete(Integer id) {
         findById(id);
         emprestimoRepository.deleteById(id);
+    }
+
+    public List<Emprestimo> findAllByUser(Integer id) {
+        usuarioService.findById(id);
+        return emprestimoRepository.findAllByUser(id);
     }
 }

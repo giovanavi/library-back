@@ -29,7 +29,6 @@ public class UsuarioResource {
     private LivroService livroService;
 
 
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Integer id){
         Usuario user = usuarioService.findById(id);
