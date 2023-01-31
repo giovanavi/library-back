@@ -2,7 +2,6 @@ package com.giovana.library.services;
 
 import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.repositories.EmprestimoRepository;
-import com.giovana.library.repositories.UsuarioRepository;
 import com.giovana.library.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +18,8 @@ public class EmprestimoService {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private LivroService livroService;
 
     public Emprestimo findById(Integer id){
         Optional<Emprestimo> emp =  emprestimoRepository.findById(id);
@@ -31,22 +32,26 @@ public class EmprestimoService {
     }
 
     public Emprestimo create(Emprestimo emp){
+        livroService.updateStatus(emp.getLivro());
         return emprestimoRepository.save(emp);
     }
 
     public Emprestimo update(Integer id, Emprestimo emp){
-        Emprestimo e = findById(id);
+        Emprestimo newEmp = findById(id);
+        updateData(newEmp, emp);
 
-        e.setDataEmprestimo(emp.getDataEmprestimo());
-        e.setDataDevolucao(emp.getDataDevolucao());
-        e.setUsuario(emp.getUsuario());
-        e.setLivro(emp.getLivro());
+        return emprestimoRepository.save(newEmp);
+    }
 
-        return emprestimoRepository.save(e);
+    private void updateData(Emprestimo newEmp, Emprestimo emp){
+        newEmp.setDataEmprestimo(emp.getDataEmprestimo());
+        newEmp.setDataDevolucao(emp.getDataDevolucao());
+        newEmp.setLivro(emp.getLivro());
     }
 
     public void delete(Integer id) {
         findById(id);
+        livroService.updateStatus(findById(id).getLivro());
         emprestimoRepository.deleteById(id);
     }
 

@@ -54,13 +54,6 @@ public class UsuarioResource {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario){
-        //alterando informações do user nos emprestimos
-        List<Emprestimo> emprestimos = usuario.getEmprestimos();
-        for (Emprestimo e: emprestimos){
-            e.setUsuario(usuario);
-            emprestimoService.update(e.getId(), e);
-        }
-
         Usuario newUsuario = usuarioService.update(id, usuario);
 
         return ResponseEntity.ok().body(newUsuario);

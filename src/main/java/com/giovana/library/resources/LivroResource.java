@@ -39,11 +39,6 @@ public class LivroResource {
 
     @PostMapping
     public ResponseEntity<Livro> create(@RequestBody Livro livro){
-        //alterando informações do livro no emprestimo
-        Emprestimo emp = livro.getEmprestimo();
-        emp.setLivro(livro);
-        emprestimoService.update(emp.getId(), emp);
-
         livro = service.create(livro);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livro.getId()).toUri();

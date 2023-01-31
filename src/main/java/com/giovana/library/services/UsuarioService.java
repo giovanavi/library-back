@@ -32,15 +32,18 @@ public class UsuarioService {
     }
 
     public Usuario update(Integer id, Usuario usuario){
+        Usuario newUsuario = findById(id);
+        updateData(newUsuario, usuario);
 
-        Usuario u = findById(id);
-        u.setNome(usuario.getNome());
-        u.setMatricula(usuario.getMatricula());
-        u.setEmail(usuario.getEmail());
-        u.setTurma(usuario.getTurma());
-        u.setCpf(usuario.getCpf());
+        return usuarioRepository.save(newUsuario);
+    }
 
-        return usuarioRepository.save(u);
+    private void updateData(Usuario newUsuario, Usuario usuario){
+        newUsuario.setNome(usuario.getNome());
+        newUsuario.setMatricula(usuario.getMatricula());
+        newUsuario.setEmail(usuario.getEmail());
+        newUsuario.setTurma(usuario.getTurma());
+        newUsuario.setCpf(usuario.getCpf());
     }
 
     public void delete(Integer id) {

@@ -16,7 +16,6 @@ public class LivroService {
     @Autowired
     private LivroRepository livroRepository;
 
-
     public Livro findById(Integer id){
         Optional<Livro> livro = livroRepository.findById(id);
         return livro.orElseThrow( () -> new ObjectNotFoundException(
@@ -31,18 +30,33 @@ public class LivroService {
         return livroRepository.save(livro);
     }
 
+    //ALTERAR
+    public void updateStatus(Livro livro){
+        if (livro.getStatus().equals("true")){
+            livro.setStatus("false");
+        }else {
+            livro.setStatus("true");
+        }
+
+        livroRepository.save(livro);
+    }
+
     public Livro update(Integer id, Livro livro) {
+        Livro newLivro = findById(id);
+        updateData(newLivro, livro);
 
+//        emprestimoService.update(newLivro.getEmprestimo().getId(), newLivro.getEmprestimo());
 
-        Livro l = findById(id);
-        l.setNome(livro.getNome());
-        l.setIsbn(livro.getIsbn());
-        l.setAutor(livro.getAutor());
-        l.setEditora(livro.getEditora());
-        l.setGenero(livro.getGenero());
-        l.setStatus(livro.getStatus());
+        return livroRepository.save(newLivro);
+    }
 
-        return livroRepository.save(l);
+    private void updateData(Livro newLivro, Livro livro){
+        newLivro.setNome(livro.getNome());
+        newLivro.setIsbn(livro.getIsbn());
+        newLivro.setAutor(livro.getAutor());
+        newLivro.setEditora(livro.getEditora());
+        newLivro.setGenero(livro.getGenero());
+        newLivro.setStatus(livro.getStatus());
     }
 
     public void delete(Integer id) {

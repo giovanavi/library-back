@@ -2,7 +2,6 @@ package com.giovana.library.resources;
 
 import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
-import com.giovana.library.entity.Livro;
 import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,6 @@ public class EmprestimoResource {
     @Autowired
     private EmprestimoService emprestimoService;
 
-    @Autowired
-    private LivroService livroService;
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<Emprestimo> findById(@PathVariable Integer id){
         Emprestimo emp = emprestimoService.findById(id);
@@ -41,10 +37,6 @@ public class EmprestimoResource {
 
     @PostMapping
     public ResponseEntity<Emprestimo> create(@RequestBody Emprestimo emp){
-        Livro livro = emp.getLivro();
-        livro.setStatus("true");
-        livroService.update(emp.getLivro().getId(), emp.getLivro());
-
         emp = emprestimoService.create(emp);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(emp.getId()).toUri();
 
@@ -60,10 +52,6 @@ public class EmprestimoResource {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
-        Emprestimo emp = findById(id).getBody();
-        Livro livro = emp.getLivro();
-        livro.setStatus("false");
-        livroService.update(emp.getLivro().getId(), emp.getLivro());
 
         emprestimoService.delete(id);
         return ResponseEntity.noContent().build();
@@ -77,5 +65,5 @@ public class EmprestimoResource {
         //localhost:8080/emprestimo?user=x
         // quero ver na lista de emprestimos, todos os emprestimos do usuário x
     }
-    
+
 }
