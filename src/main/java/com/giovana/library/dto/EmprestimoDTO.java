@@ -12,14 +12,18 @@ public class EmprestimoDTO implements Serializable {
     private Integer id;
     private String dataEmprestimo;
     private String dataDevolucao;
-    private String nomeUsuario;
-    private String nomeLivro;
+    private String usuario;
+    private String email;
+    private String livro;
+    private String isbn;
 
     public EmprestimoDTO(Emprestimo emp) {
         this.id = emp.getId();
         this.dataEmprestimo = emp.getDataEmprestimo();
         this.dataDevolucao = emp.getDataDevolucao();
-        this.nomeUsuario = emp.getUsuario().getNome();
-        this.nomeLivro = emp.getLivro().getNome();
+        this.usuario = emp.getUsuario().getNome();
+        this.email = emp.getUsuario().getEmail();
+        this.livro = emp.getLivro().getNome();
+        this.isbn = emp.getLivro().getIsbn();
     }
 }
