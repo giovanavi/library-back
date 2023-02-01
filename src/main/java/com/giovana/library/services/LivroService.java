@@ -30,14 +30,13 @@ public class LivroService {
         return livroRepository.save(livro);
     }
 
-    //ALTERAR
-    public void updateStatus(Livro livro){
-        if (livro.getStatus().equals("true")){
-            livro.setStatus("false");
-        }else {
-            livro.setStatus("true");
-        }
+    public void updateStatusTrue(Livro livro){
+        livro.setStatus("true");
+        livroRepository.save(livro);
+    }
 
+    public void updateStatusFalse(Livro livro){
+        livro.setStatus("false");
         livroRepository.save(livro);
     }
 

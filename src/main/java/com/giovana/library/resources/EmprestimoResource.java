@@ -3,7 +3,6 @@ package com.giovana.library.resources;
 import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.services.EmprestimoService;
-import com.giovana.library.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

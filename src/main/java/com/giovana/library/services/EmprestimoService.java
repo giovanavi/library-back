@@ -32,7 +32,7 @@ public class EmprestimoService {
     }
 
     public Emprestimo create(Emprestimo emp){
-        livroService.updateStatus(emp.getLivro());
+        livroService.updateStatusTrue(emp.getLivro());
         return emprestimoRepository.save(emp);
     }
 
@@ -51,7 +51,7 @@ public class EmprestimoService {
 
     public void delete(Integer id) {
         findById(id);
-        livroService.updateStatus(findById(id).getLivro());
+        livroService.updateStatusFalse(findById(id).getLivro());
         emprestimoRepository.deleteById(id);
     }
 

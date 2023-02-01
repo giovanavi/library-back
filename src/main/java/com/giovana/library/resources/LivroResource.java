@@ -1,7 +1,6 @@
 package com.giovana.library.resources;
 
 import com.giovana.library.dto.LivroDTO;
-import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Livro;
 import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
@@ -18,19 +17,19 @@ import java.util.List;
 public class LivroResource {
 
     @Autowired
-    private LivroService service;
+    private LivroService livroService;
 
     @Autowired
     private EmprestimoService emprestimoService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Livro> findById(@PathVariable Integer id){
-        Livro livro = service.findById(id);
+        Livro livro = livroService.findById(id);
         return ResponseEntity.ok().body(livro);
     }
     @GetMapping(value = "/")
     public ResponseEntity<List<LivroDTO>> findAll(){
-        List<Livro> list = service.findAll();
+        List<Livro> list = livroService.findAll();
 
         List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).toList();
 
@@ -39,7 +38,7 @@ public class LivroResource {
 
     @PostMapping
     public ResponseEntity<Livro> create(@RequestBody Livro livro){
-        livro = service.create(livro);
+        livro = livroService.create(livro);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livro.getId()).toUri();
 
@@ -47,14 +46,14 @@ public class LivroResource {
     }
     @PutMapping(value = "/{id}")
     public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro livro){
-        Livro newLivro = service.update(id, livro);
+        Livro newLivro = livroService.update(id, livro);
 
         return ResponseEntity.ok().body(newLivro);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
-        service.delete(id);
+        livroService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
