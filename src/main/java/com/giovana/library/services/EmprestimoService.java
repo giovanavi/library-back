@@ -32,8 +32,10 @@ public class EmprestimoService {
     }
 
     public Emprestimo create(Emprestimo emp){
+
         livroService.updateStatusTrue(emp.getLivro());
         return emprestimoRepository.save(emp);
+
     }
 
     public Emprestimo update(Integer id, Emprestimo emp){
