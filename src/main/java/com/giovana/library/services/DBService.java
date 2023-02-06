@@ -23,13 +23,13 @@ public class DBService {
 
     public void initDataBase() {
 
-        Livro livro1 = new Livro("45612", "HP1", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro2 = new Livro("12345", "HP2", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro3 = new Livro("78945", "HP3", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro4 = new Livro("45784", "HP4", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro5 = new Livro("12548", "HP5", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro6 = new Livro("63254", "HP6", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
-        Livro livro7 = new Livro("58796", "HP7", "Hermione Granger", "Rocco", "Infantojuvenil", "false");
+        Livro livro1 = new Livro("123456789", "HP1", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro2 = new Livro("987654321", "HP2", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro3 = new Livro("456123789", "HP3", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro4 = new Livro("879124654", "HP4", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro5 = new Livro("369258147", "HP5", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro6 = new Livro("963852741", "HP6", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro7 = new Livro("753159456", "HP7", "Hermione Granger", "Rocco", "Infantojuvenil");
 
         Usuario usuario1 = new Usuario("123456", "João", "joao@email.com", "2B", "12345678909");
         Usuario usuario2 = new Usuario("698745", "Maria", "maria@email.com", "3B", "96385274151");

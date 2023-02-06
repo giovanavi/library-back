@@ -1,10 +1,12 @@
 package com.giovana.library.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 
@@ -21,14 +23,17 @@ public class Administrador implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty(message = "campo obrigatório")
     @Column(unique = true)
     private String login;
 
+    @NotEmpty(message = "campo obrigatório")
     @Column(unique = true)
     private String email;
 
+    @Length(min = 6, message = "o campo deve ter mais que 6 caracteres")
+    @NotEmpty(message = "campo obrigatório")
     @Column
-    @Getter @Setter
     private String senha;
 
     @Override

@@ -27,15 +27,16 @@ public class LivroService {
     }
 
     public Livro create(Livro livro){
+        livro.setStatus("false");
         return livroRepository.save(livro);
     }
 
-    public void updateStatusTrue(Livro livro){
+    public void setStatusTrue(Livro livro){
         livro.setStatus("true");
         livroRepository.save(livro);
     }
 
-    public void updateStatusFalse(Livro livro){
+    public void setStatusFalse(Livro livro){
         livro.setStatus("false");
         livroRepository.save(livro);
     }

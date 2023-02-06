@@ -6,10 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
@@ -24,15 +28,22 @@ public class Usuario implements Serializable {
     private Integer id;
 
     @Column(unique = true)
+    @Length(min = 6, max = 6)
     private String matricula;
 
+    @NotEmpty(message = "campo obrigatório")
+    @Length(min = 3, max = 100)
     private String nome;
-
     @Column(unique = true)
+    @NotEmpty(message = "campo obrigatório")
+    @Length(min = 3, max = 100)
     private String email;
 
     private String turma;
+
     @Column(unique = true)
+    @NotEmpty(message = "campo obrigatório")
+    @Length(min = 11, max = 11)
     private String cpf;
 
     @JsonIgnoreProperties(value = {"usuario", "livro"})

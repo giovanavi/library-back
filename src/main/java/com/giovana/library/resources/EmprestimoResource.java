@@ -3,6 +3,7 @@ package com.giovana.library.resources;
 import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.services.EmprestimoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class EmprestimoResource {
     }
 
     @PostMapping
-    public ResponseEntity<Emprestimo> create(@RequestBody Emprestimo emp){
+    public ResponseEntity<Emprestimo> create(@Valid @RequestBody Emprestimo emp){
         emp = emprestimoService.create(emp);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(emp.getId()).toUri();
 
@@ -43,7 +44,7 @@ public class EmprestimoResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Emprestimo> update(@PathVariable Integer id, @RequestBody Emprestimo emp){
+    public ResponseEntity<Emprestimo> update(@PathVariable Integer id,@Valid @RequestBody Emprestimo emp){
         Emprestimo newEmprestimo = emprestimoService.update(id, emp);
 
         return ResponseEntity.ok().body(newEmprestimo);

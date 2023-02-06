@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @Getter @Setter
-public class StandartError {
+public class FieldMessage implements Serializable {
 
-    private long timeStamp;
-    private Integer status;
-    private String message;
-
-
+    private String fieldName;
+    private String fieldError;
 
 }

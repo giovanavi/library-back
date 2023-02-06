@@ -2,8 +2,8 @@ package com.giovana.library.resources;
 
 import com.giovana.library.dto.LivroDTO;
 import com.giovana.library.entity.Livro;
-import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +18,6 @@ public class LivroResource {
 
     @Autowired
     private LivroService livroService;
-
-    @Autowired
-    private EmprestimoService emprestimoService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Livro> findById(@PathVariable Integer id){
@@ -37,7 +34,7 @@ public class LivroResource {
     }
 
     @PostMapping
-    public ResponseEntity<Livro> create(@RequestBody Livro livro){
+    public ResponseEntity<Livro> create(@Valid @RequestBody Livro livro){
         livro = livroService.create(livro);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livro.getId()).toUri();
@@ -45,7 +42,7 @@ public class LivroResource {
         return ResponseEntity.created(uri).body(livro);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro livro){
+    public ResponseEntity<Livro> update(@PathVariable Integer id, @Valid @RequestBody Livro livro){
         Livro newLivro = livroService.update(id, livro);
 
         return ResponseEntity.ok().body(newLivro);

@@ -33,7 +33,7 @@ public class EmprestimoService {
 
     public Emprestimo create(Emprestimo emp){
 
-        livroService.updateStatusTrue(emp.getLivro());
+        livroService.setStatusTrue(emp.getLivro());
         return emprestimoRepository.save(emp);
 
     }
@@ -53,7 +53,7 @@ public class EmprestimoService {
 
     public void delete(Integer id) {
         findById(id);
-        livroService.updateStatusFalse(findById(id).getLivro());
+        livroService.setStatusFalse(findById(id).getLivro());
         emprestimoRepository.deleteById(id);
     }
 

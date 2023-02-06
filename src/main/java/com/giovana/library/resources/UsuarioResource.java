@@ -7,6 +7,7 @@ import com.giovana.library.entity.Usuario;
 import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
 import com.giovana.library.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/user")
 public class UsuarioResource {
@@ -44,7 +46,7 @@ public class UsuarioResource {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> create(@Valid @RequestBody Usuario usuario){
         usuario = usuarioService.create(usuario);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
@@ -53,7 +55,7 @@ public class UsuarioResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> update(@PathVariable Integer id, @Valid @RequestBody Usuario usuario){
         Usuario newUsuario = usuarioService.update(id, usuario);
 
         return ResponseEntity.ok().body(newUsuario);
