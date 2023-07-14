@@ -50,6 +50,15 @@ public class Livro implements Serializable {
     @OneToOne(mappedBy = "livro", targetEntity = Emprestimo.class)
     private Emprestimo emprestimo;
 
+    public Livro(String isbn, String nome, String autor, String editora, String genero, String status) {
+        this.isbn = isbn;
+        this.nome = nome;
+        this.autor = autor;
+        this.editora = editora;
+        this.genero = genero;
+        this.status = status;
+    }
+
     public Livro(String isbn, String nome, String autor, String editora, String genero) {
         this.isbn = isbn;
         this.nome = nome;

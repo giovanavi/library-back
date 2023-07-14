@@ -23,9 +23,9 @@ public class DBService {
 
     public void initDataBase() {
 
-        Livro livro1 = new Livro("123456789", "HP1", "Hermione Granger", "Rocco", "Infantojuvenil");
-        Livro livro2 = new Livro("987654321", "HP2", "Hermione Granger", "Rocco", "Infantojuvenil");
-        Livro livro3 = new Livro("456123789", "HP3", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro1 = new Livro("123456789", "HP1", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
+        Livro livro2 = new Livro("987654321", "HP2", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
+        Livro livro3 = new Livro("456123789", "HP3", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
         Livro livro4 = new Livro("879124654", "HP4", "Hermione Granger", "Rocco", "Infantojuvenil");
         Livro livro5 = new Livro("369258147", "HP5", "Hermione Granger", "Rocco", "Infantojuvenil");
         Livro livro6 = new Livro("963852741", "HP6", "Hermione Granger", "Rocco", "Infantojuvenil");

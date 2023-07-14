@@ -62,10 +62,10 @@ public class UsuarioResource {
     }
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
-        Emprestimo emp = emprestimoService.findById(id);
-        Livro livro = emp.getLivro();
-        livro.setStatus("false");
-        livroService.update(emp.getLivro().getId(), emp.getLivro());
+//        Emprestimo emp = emprestimoService.findById(id);
+//        Livro livro = emp.getLivro();
+//        livro.setStatus("false");
+//        livroService.update(emp.getLivro().getId(), emp.getLivro());
 
         usuarioService.delete(id);
         return ResponseEntity.noContent().build();
