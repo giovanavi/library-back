@@ -65,5 +65,6 @@ public class Livro implements Serializable {
         this.autor = autor;
         this.editora = editora;
         this.genero = genero;
+        this.status = "false";
     }
 }
