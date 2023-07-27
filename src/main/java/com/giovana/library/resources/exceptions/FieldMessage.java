@@ -11,6 +11,6 @@ import java.io.Serializable;
 public class FieldMessage implements Serializable {
 
     private String fieldName;
-    private String fieldError;
+    private String message;
 
 }

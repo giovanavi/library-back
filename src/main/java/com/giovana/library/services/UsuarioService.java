@@ -40,9 +40,7 @@ public class UsuarioService {
 
     private void updateData(Usuario newUsuario, Usuario usuario){
         newUsuario.setNome(usuario.getNome());
-        newUsuario.setMatricula(usuario.getMatricula());
         newUsuario.setEmail(usuario.getEmail());
-        newUsuario.setTurma(usuario.getTurma());
         newUsuario.setCpf(usuario.getCpf());
     }
 

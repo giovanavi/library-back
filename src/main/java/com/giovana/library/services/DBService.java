@@ -31,9 +31,9 @@ public class DBService {
         Livro livro6 = new Livro("963852741", "HP6", "Hermione Granger", "Rocco", "Infantojuvenil");
         Livro livro7 = new Livro("753159456", "HP7", "Hermione Granger", "Rocco", "Infantojuvenil");
 
-        Usuario usuario1 = new Usuario("123456", "João", "joao@email.com", "2B", "12345678909");
-        Usuario usuario2 = new Usuario("698745", "Maria", "maria@email.com", "3B", "96385274151");
-        Usuario usuario3 = new Usuario("635241", "Pedro", "pedro@email.com", "1C", "09876543211");
+        Usuario usuario1 = new Usuario("João", "joao@email.com","12345678909");
+        Usuario usuario2 = new Usuario("Maria", "maria@email.com","96385274151");
+        Usuario usuario3 = new Usuario("Pedro", "pedro@email.com","09876543211");
 
         Emprestimo emprestimo1 = new Emprestimo("26/1/2023", "9/2/2023", usuario1, livro1);
         livro1.setStatus("true");
