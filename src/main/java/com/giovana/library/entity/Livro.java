@@ -24,23 +24,23 @@ public class Livro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo ISBN é obrigatório")
     @Length(min = 8, max = 13)
     private String isbn;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo NOME é obrigatório")
     @Length(min = 3, max = 100)
     private String nome;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo AUTOR é obrigatório")
     @Length(min = 3, max = 100)
     private String autor;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo EDITORA é obrigatório")
     @Length(min = 3, max = 50)
     private String editora;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo GENRERO é obrigatório")
     @Length(min = 3, max = 50)
     private String genero;
 

@@ -15,7 +15,7 @@ public class EmprestimoDTO implements Serializable {
     private String usuario;
     private String email;
     private String livro;
-    private String isbn;
+    private Integer id_livro;
 
     public EmprestimoDTO(Emprestimo emp) {
         this.id = emp.getId();
@@ -24,6 +24,6 @@ public class EmprestimoDTO implements Serializable {
         this.usuario = emp.getUsuario().getNome();
         this.email = emp.getUsuario().getEmail();
         this.livro = emp.getLivro().getNome();
-        this.isbn = emp.getLivro().getIsbn();
+        this.id_livro = emp.getLivro().getId();
     }
 }

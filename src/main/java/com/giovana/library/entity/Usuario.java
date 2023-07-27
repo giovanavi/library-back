@@ -27,22 +27,18 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
-    @Length(min = 6, max = 6)
-    private String matricula;
-
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo NOME é obrigatório")
     @Length(min = 3, max = 100)
     private String nome;
+
     @Column(unique = true)
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo EMAIL é obrigatório")
     @Length(min = 3, max = 100)
     private String email;
 
-    private String turma;
 
     @Column(unique = true)
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo CPF é obrigatório")
     @Length(min = 11, max = 11)
     private String cpf;
 
@@ -50,11 +46,9 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
-    public Usuario(String matricula, String nome, String email, String turma, String cpf) {
-        this.matricula = matricula;
+    public Usuario(String nome, String email, String cpf) {
         this.nome = nome;
         this.email = email;
-        this.turma = turma;
         this.cpf = cpf;
     }
 }

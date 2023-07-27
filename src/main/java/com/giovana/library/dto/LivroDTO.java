@@ -16,6 +16,8 @@ public class LivroDTO implements Serializable {
     private Integer id;
     private String nome;
     private String autor;
+    private String genero;
+    private String editora;
     private String status;
 
 
@@ -24,5 +26,7 @@ public class LivroDTO implements Serializable {
         this.nome = livro.getNome();
         this.autor = livro.getAutor();
         this.status = livro.getStatus();
+        this.editora = livro.getEditora();
+        this.genero = livro.getGenero();
     }
 }

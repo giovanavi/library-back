@@ -26,22 +26,22 @@ public class Emprestimo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo DATA_EMPRESTIMO é obrigatório")
     @Length(min = 8, max = 10)
     private String dataEmprestimo;
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo DATA_DEVOLUÇÃO é obrigatório")
     @Length(min = 8, max = 10)
     private String dataDevolucao;
 
     @JsonIgnoreProperties("emprestimos")
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo USUARIO é obrigatório")
     private Usuario usuario;
     @JsonIgnoreProperties("emprestimo")
     @OneToOne
     @JoinColumn(name = "livro_id")
-    @NotEmpty(message = "campo obrigatório")
+    @NotEmpty(message = "o campo LIVRO é obrigatório")
     private Livro livro;
 
     public Emprestimo(String dataEmprestimo, String dataDevolucao, Usuario usuario, Livro livro) {
