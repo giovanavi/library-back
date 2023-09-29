@@ -23,7 +23,7 @@ public class LivroService {
     }
 
     public List<Livro> findByTitle(String str){
-        Optional<List<Livro>> livros = Optional.ofNullable(livroRepository.findByNomeContaining(str));
+        Optional<List<Livro>> livros = Optional.ofNullable(livroRepository.findByNomeContainingIgnoringCase(str));
         return livros.orElseThrow( () -> new ObjectNotFoundException(
                 "Nenhum livro encontrado! "));
     }

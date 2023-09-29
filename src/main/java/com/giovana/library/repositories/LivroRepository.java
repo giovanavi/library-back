@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Integer>  {
-    public List<Livro> findByNomeContaining(String str);
+    public List<Livro> findByNomeContainingIgnoringCase(String str);
 }
