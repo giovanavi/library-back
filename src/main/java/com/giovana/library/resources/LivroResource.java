@@ -24,6 +24,16 @@ public class LivroResource {
         Livro livro = livroService.findById(id);
         return ResponseEntity.ok().body(livro);
     }
+
+    @GetMapping(value = "/nome/{titulo}")
+    public ResponseEntity<List<LivroDTO>> findByTitle(@PathVariable String titulo){
+        List<Livro> list = livroService.findByTitle(titulo);
+
+        List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).toList();
+
+        return ResponseEntity.ok().body(listDTO);
+    }
+
     @GetMapping(value = "/")
     public ResponseEntity<List<LivroDTO>> findAll(){
         List<Livro> list = livroService.findAll();

@@ -22,6 +22,12 @@ public class LivroService {
                 "Objeto não encontrado! Id: "+id+" - Tipo: "+Livro.class.getName()));
     }
 
+    public List<Livro> findByTitle(String str){
+        Optional<List<Livro>> livros = Optional.ofNullable(livroRepository.findByNomeContaining(str));
+        return livros.orElseThrow( () -> new ObjectNotFoundException(
+                "Nenhum livro encontrado! "));
+    }
+
     public List<Livro> findAll(){
         return livroRepository.findAll();
     }
