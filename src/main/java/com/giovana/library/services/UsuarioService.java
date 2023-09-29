@@ -1,5 +1,6 @@
 package com.giovana.library.services;
 
+import com.giovana.library.entity.Livro;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.repositories.UsuarioRepository;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,6 +22,12 @@ public class UsuarioService {
         Optional<Usuario> user = usuarioRepository.findById(id);
         return user.orElseThrow( () -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: "+id+" - Tipo: "+ Usuario.class.getName()));
+    }
+
+    public List<Usuario> findByNome(String nome){
+        Optional<List<Usuario>> users = usuarioRepository.findByNomeContainingIgnoringCase(nome);
+        return users.orElseThrow( () -> new ObjectNotFoundException(
+                "Nenhum usuário encontrado! "));
     }
 
     public List<Usuario> findAll(){

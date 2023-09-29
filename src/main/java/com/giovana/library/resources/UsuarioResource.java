@@ -1,7 +1,7 @@
 package com.giovana.library.resources;
 
+import com.giovana.library.dto.LivroDTO;
 import com.giovana.library.dto.UsuarioDTO;
-import com.giovana.library.entity.Emprestimo;
 import com.giovana.library.entity.Livro;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.services.EmprestimoService;
@@ -36,6 +36,16 @@ public class UsuarioResource {
         Usuario user = usuarioService.findById(id);
         return ResponseEntity.ok().body(user);
     }
+
+    @GetMapping(value = "/nome/{nome}")
+    public ResponseEntity<List<UsuarioDTO>> findByNome(@PathVariable String nome){
+        List<Usuario> list = usuarioService.findByNome(nome);
+
+        List<UsuarioDTO> listDTO = list.stream().map( obj -> new UsuarioDTO(obj)).toList();
+
+        return ResponseEntity.ok().body(listDTO);
+    }
+
     @GetMapping(value = "/")
     public ResponseEntity<List<UsuarioDTO>> findAll(){
         List<Usuario> list = usuarioService.findAll();
