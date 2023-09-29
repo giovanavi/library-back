@@ -23,13 +23,13 @@ public class DBService {
 
     public void initDataBase() {
 
-        Livro livro1 = new Livro("123456789", "HP1", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
-        Livro livro2 = new Livro("987654321", "HP2", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
-        Livro livro3 = new Livro("456123789", "HP3", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
-        Livro livro4 = new Livro("879124654", "HP4", "Hermione Granger", "Rocco", "Infantojuvenil");
-        Livro livro5 = new Livro("369258147", "HP5", "Hermione Granger", "Rocco", "Infantojuvenil");
-        Livro livro6 = new Livro("963852741", "HP6", "Hermione Granger", "Rocco", "Infantojuvenil");
-        Livro livro7 = new Livro("753159456", "HP7", "Hermione Granger", "Rocco", "Infantojuvenil");
+        Livro livro1 = new Livro("123456789", "Harry Potter 1", "Hermione Granger", "Rocco", "Infantojuvenil", "true");
+        Livro livro2 = new Livro("987654321", "Percy Jackson", "Rick Riordan", "Rocco", "Infantojuvenil", "true");
+        Livro livro3 = new Livro("456123789", "Jogos Vorazes", "Suzanne Collins", "Rocco", "Infantojuvenil", "true");
+        Livro livro4 = new Livro("879124654", "As Cronicas de Narnia", "C. S. Lewis", "Intriseca", "Infantojuvenil");
+        Livro livro5 = new Livro("369258147", "O oceano no fim do caminho", "Neil Gaiman", "Saraiva", "Infantojuvenil");
+        Livro livro6 = new Livro("963852741", "Divergente", "Veronica Roth", "Sextante", "Infantojuvenil");
+        Livro livro7 = new Livro("753159456", "O meu Pé de Laranja Lima", "José Mauro de Vasconcelos", "Arqueiro", "Infantojuvenil");
 
         Usuario usuario1 = new Usuario("João", "joao@email.com","12345678909");
         Usuario usuario2 = new Usuario("Maria", "maria@email.com","96385274151");
