@@ -1,4 +1,4 @@
-package com.giovana.library.resources;
+package com.giovana.library.controllers;
 
 import com.giovana.library.dto.LivroDTO;
 import com.giovana.library.entity.Livro;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/livro")
-public class LivroResource {
+public class LivroController {
 
     @Autowired
     private LivroService livroService;

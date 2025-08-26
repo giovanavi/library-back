@@ -1,8 +1,6 @@
-package com.giovana.library.resources;
+package com.giovana.library.controllers;
 
-import com.giovana.library.dto.LivroDTO;
 import com.giovana.library.dto.UsuarioDTO;
-import com.giovana.library.entity.Livro;
 import com.giovana.library.entity.Usuario;
 import com.giovana.library.services.EmprestimoService;
 import com.giovana.library.services.LivroService;
@@ -19,7 +17,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/user")
-public class UsuarioResource {
+public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;

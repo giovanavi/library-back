@@ -1,4 +1,4 @@
-package com.giovana.library.resources.exceptions;
+package com.giovana.library.controllers.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

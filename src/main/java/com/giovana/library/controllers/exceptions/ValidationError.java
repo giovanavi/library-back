@@ -1,7 +1,6 @@
-package com.giovana.library.resources.exceptions;
+package com.giovana.library.controllers.exceptions;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;

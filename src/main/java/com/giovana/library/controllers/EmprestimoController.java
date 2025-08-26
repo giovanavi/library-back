@@ -1,4 +1,4 @@
-package com.giovana.library.resources;
+package com.giovana.library.controllers;
 
 import com.giovana.library.dto.EmprestimoDTO;
 import com.giovana.library.entity.Emprestimo;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/emprestimo")
-public class EmprestimoResource {
+public class EmprestimoController {
 
     @Autowired
     private EmprestimoService emprestimoService;

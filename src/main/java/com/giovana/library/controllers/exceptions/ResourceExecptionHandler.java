@@ -1,4 +1,4 @@
-package com.giovana.library.resources.exceptions;
+package com.giovana.library.controllers.exceptions;
 
 
 import com.giovana.library.services.exceptions.DataIntegrityViolationException;
