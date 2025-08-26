@@ -19,9 +19,7 @@ import java.util.List;
 @Getter @Setter
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

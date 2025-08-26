@@ -16,10 +16,8 @@ import java.io.Serializable;
 @Getter @Setter
 @Entity
 @Table(name = "livro")
-public class Livro implements Serializable {
+public class Livro{
 
-    private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

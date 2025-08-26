@@ -18,9 +18,7 @@ import java.io.Serializable;
 @Getter @Setter
 @Entity
 @Table(name = "emprestimo")
-public class Emprestimo implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Emprestimo{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
