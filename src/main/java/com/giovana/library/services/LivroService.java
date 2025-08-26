@@ -65,7 +65,7 @@ public class LivroService {
         newLivro.setStatus(livro.getStatus());
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) { //atualizar
         findById(id);
         try {
             livroRepository.deleteById(id);
